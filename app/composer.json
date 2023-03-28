@@ -1,0 +1,8 @@
+{
+    "require": {
+        "phpunit/phpunit": "^9.6"
+    },
+    "autoload": {
+        "psr-4": {"TINT\\": "src/"}
+    }
+}

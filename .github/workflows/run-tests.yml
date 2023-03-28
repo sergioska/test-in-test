@@ -1,0 +1,28 @@
+name: Run test suite
+on: push
+
+jobs: 
+  run-tests:
+
+    name: Run PHPUnite tests
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: running docker-compose 
+        run: docker-compose up -d
+
+      - name: Check php version
+        run: docker-compose run php -v
+
+      - name: Running composer install (via docker-compose)
+
+        run: docker-compose run --rm composer install
+
+      - name: Running phpunit
+        run: docker-compose run php ./vendor/bin/phpunit tests
+
+    
